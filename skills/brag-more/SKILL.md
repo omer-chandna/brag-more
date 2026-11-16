@@ -16,6 +16,7 @@ Usage: `/brag-more [options]`. Options (flags or plain language):
 | `--style clean\|bold\|minimal\|showcase` | inferred from the project (see Styles) |
 | `--preview` | off: write `README.md` in place. With it, write only to `brag-output/repo/` and leave `README.md` alone |
 | `--no-banner` | banner on |
+| `--no-video` | off: if the project has no brag video, make one first (see The video) |
 | `--no-demo` | demo on when there is something to show |
 
 Work files go in `brag-output/repo/` (timestamped `brag-output-YYYY-MM-DD-HHmmss/repo/` if `brag-output/` already exists and isn't from this run). Assets the README references go in the repo, in `.github/readme/`, so they ship with it.
@@ -29,13 +30,23 @@ Read the project, not just the old README:
 - **What it is:** package manifests (`package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, …) for the name, description, version, license, binaries and scripts; the entry point and main routes or commands for the real features.
 - **How to run it:** the actual install and start commands from the manifest scripts, `Makefile`, `justfile`, Dockerfile, or CI workflow. Note the runtime versions the project pins.
 - **Signals for badges:** `LICENSE`, `.github/workflows/*`, whether the package is published (npm, PyPI, crates.io — check the manifest's name and `private` flag), the git remote (`git remote get-url origin`) for `owner/repo`.
-- **Existing brag output:** if `brag-output*/brag.mp4` and `brag.jpg` exist, they're the best demo material on the machine. Use the newest.
+- **Existing brag output:** if `brag-output*/brag.mp4` and `brag.jpg` exist, they're the best demo material on the machine. Use the newest. If there isn't one, you'll make it in the next step.
 
 Skip build output, lock files, `.git/`, env and secret files (`.env`, `.env.*`), key and credential material, and anything `.gitignore` excludes for those reasons.
 
 Before writing, answer: What is it (one sentence a stranger gets)? Who is it for? What's the one thing it does better than the alternative? What's the visual hook — the screenshot, GIF, or banner that makes someone stop scrolling? What are the 3–5 real features? What's the shortest path from clone to running?
 
 The README is public. Never carry secrets, tokens, internal hostnames, real customer or user names, email addresses, or other personal data into it or its images. If a screenshot shows such data, swap in plausible fictional stand-ins.
+
+## The video (before the plan, when there isn't one yet)
+
+The README's best demo is the project's launch video, so brag-more makes it when it's missing. Skip this step when `--no-demo` or `--no-video` is set, or when a `brag-output*/brag.mp4` already exists.
+
+1. If the `/brag` skill is installed (check the skills list), run it for this project through the Skill tool, passing along any `--tone` or format wishes. Tell the user in one line: "No launch video yet, so I'm making one with /brag first."
+2. Otherwise read `<skill-dir>/video.md` (the lean video workflow bundled here, from brag-slim) and follow it. It needs only tools already on the machine.
+3. When it finishes, the video, poster and share copy are in `brag-output/`. Carry on with the README using them as the demo.
+
+If making the video fails or the user doesn't want to wait, carry on without it and use the fallbacks under Demo.
 
 ## 2. Plan
 
@@ -118,7 +129,7 @@ If the project has no visual identity worth animating (a library with no UI), ma
 
 In order of preference:
 
-1. **The brag video.** If a `brag.mp4` exists, make a looping preview GIF or animated WebP from its strongest 4–8 seconds. Start the clip on a settled, strong frame, not a fade or a dark intro card: the first frame is what shows while the GIF loads (`ffmpeg` with a generated palette: `fps=15,scale=800:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse`). Keep it under 5 MB. Save to `.github/readme/demo.gif` and link it to the full video. `brag-output*/` is usually gitignored, so copy the video to `.github/readme/brag.mp4` and link that copy (if it's over ~25 MB, re-encode it smaller; GitHub rejects files over 100 MB). GitHub won't play a repo-relative `.mp4` inline; tell the user they can drag `brag.mp4` into the GitHub README editor to get a playable `user-attachments` URL, and leave a commented placeholder where it goes.
+1. **The brag video.** The one found in Inspect or made in The video step. If a `brag.mp4` exists, make a looping preview GIF or animated WebP from its strongest 4–8 seconds. Start the clip on a settled, strong frame, not a fade or a dark intro card: the first frame is what shows while the GIF loads (`ffmpeg` with a generated palette: `fps=15,scale=800:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse`). Keep it under 5 MB. Save to `.github/readme/demo.gif` and link it to the full video. `brag-output*/` is usually gitignored, so copy the video to `.github/readme/brag.mp4` and link that copy (if it's over ~25 MB, re-encode it smaller; GitHub rejects files over 100 MB). GitHub won't play a repo-relative `.mp4` inline; tell the user they can drag `brag.mp4` into the GitHub README editor to get a playable `user-attachments` URL, and leave a commented placeholder where it goes.
 2. **A capture of the real UI.** Run the project locally and record the core flow (entry → key action → result) with a headless browser.
 3. **A terminal recording** for CLIs: a scripted session rendered to GIF or SVG with whatever tool is installed (`vhs`, `asciinema` + `agg`, `svg-term`). Script it so it never shows real paths, usernames, or tokens.
 
@@ -174,4 +185,4 @@ Copy the original to `brag-output/repo/README.before.md` before touching anythin
   ```
 
   GitHub has no API for the social preview image; tell the user to upload `.github/readme/social-preview.png` under **Settings → General → Social preview**.
-- Offer to re-roll the banner, try another style, or run `/brag` to make a demo video if there wasn't one.
+- Offer to re-roll the banner, try another style, or remake the video in another tone.

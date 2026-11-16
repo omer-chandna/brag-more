@@ -35,7 +35,7 @@
 
 <p align="center">
   <img src=".github/readme/feature-hero.png" alt="A hero in your colors: an animated SVG with your palette, fonts and UI." width="49%">
-  <img src=".github/readme/feature-demo.png" alt="Your video as the demo: run /brag first and the README plays it." width="49%">
+  <img src=".github/readme/feature-demo.png" alt="Your video as the demo: no video yet? It makes one, then plays it." width="49%">
   <img src=".github/readme/feature-styles.png" alt="Four styles: clean, bold, minimal, or showcase." width="49%">
   <img src=".github/readme/feature-checked.png" alt="Checked before it ships: links resolve, commands run, nothing invented." width="49%">
 </p>
@@ -60,7 +60,7 @@
 
 Your existing README text is kept and restyled. Nothing is committed or pushed. With `--preview` it writes to `brag-output/repo/` and leaves `README.md` alone.
 
-If you ran `/brag` first, the README uses your launch video as its demo. brag-more is a companion to [brag](https://github.com/latent-spaces/brag), which makes the video.
+brag-more makes your launch video too. If the project has no `brag-output/brag.mp4`, it runs [brag](https://github.com/latent-spaces/brag) first when that's installed, or its own bundled copy of the lean video workflow when it isn't, then uses the video as the README's demo. Pass `--no-video` to skip that, or `--no-demo` to skip the demo entirely.
 
 ## Install
 
@@ -84,6 +84,7 @@ Restart your agent after copying.
 | Path | What it is |
 |---|---|
 | `skills/brag-more/SKILL.md` | The skill |
+| `skills/brag-more/video.md` | The video workflow it uses when there's no launch video yet (from brag-slim) |
 | `brag-output/` | This repo's own launch video, plan and share copy |
 | `.github/readme/` | The images this README uses, made by the skill |
 
