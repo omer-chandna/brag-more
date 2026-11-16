@@ -1,0 +1,19 @@
+# Generated while rendering
+work/frames/
+work/stills/
+work/chrome-profile/
+work/music.wav
+work/poster.png
+work/sheet.png
+work/render.log
+work/*.png
+work/*.bak
+work/hero_pol*.svg
+work/hero-check.png
+.DS_Store
+work/readme.html
+work/before.html
+work/h.html
+work/h2.html
+work/sp.html
+work/hero_static.svg

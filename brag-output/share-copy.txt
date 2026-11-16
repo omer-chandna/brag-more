@@ -1,0 +1,3 @@
+My README looked like a default template. One command and it looks like a launch page.
+
+brag-more is an agent skill that rebuilds your GitHub README: animated hero in your project's own colors, framed demo, feature cards, a quickstart that runs.

@@ -1,0 +1,14 @@
+<style>
+@font-face{font-family:G;font-weight:600;src:url(assets/geist.woff2) format('woff2')}
+@font-face{font-family:M;font-weight:500;src:url(assets/geistmono.woff2) format('woff2')}
+*{box-sizing:border-box;margin:0}
+body{width:800px;height:600px;overflow:hidden;background:#0b0f14;font-family:G,sans-serif;color:#f0f6fc;position:relative}
+body:before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 85% 100%,rgba(245,165,36,.22),transparent);}
+.edge{position:absolute;inset:0;border:2px solid #30363d;border-radius:28px;pointer-events:none}
+.t{position:absolute;left:48px;top:44px}
+h2{font-size:60px;line-height:1;letter-spacing:-3px}
+p{font:500 30px/1.25 M,monospace;margin-top:16px;color:#c9d1d9;width:700px}
+.vis{position:absolute;left:48px;right:48px;bottom:0;height:250px;overflow:hidden;border-radius:16px 16px 0 0;background:#fff;box-shadow:0 0 0 1px #30363d}
+.vis img{position:absolute;left:0;display:block}
+.dark{background:#161b22}
+</style><body><div class="t"><h2>Four styles</h2><p>clean, bold, minimal, or showcase.</p></div><div class="vis" style="display:flex;gap:10px;background:#0b0f14;box-shadow:none"><div style="flex:1;overflow:hidden;position:relative;border-radius:10px;background:#fff"><img src="assets/horse-clean.png" style="width:340px;top:0;left:0"></div><div style="flex:1;overflow:hidden;position:relative;border-radius:10px;background:#fff"><img src="assets/horse-showcase.png" style="width:340px;top:0;left:0"></div></div><div class="edge"></div></body>
