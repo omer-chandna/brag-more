@@ -46,7 +46,7 @@ The README's best demo is the project's launch video, so brag-more makes it when
 2. Otherwise read `<skill-dir>/video.md` (the lean video workflow bundled here, from brag-slim) and follow it. It needs only tools already on the machine.
 3. When it finishes, the video, poster and share copy are in `brag-output/`. Carry on with the README using them as the demo.
 
-If making the video fails or the user doesn't want to wait, carry on without it and use the fallbacks under Demo.
+Making the video is not optional, and "there's no UI to film" is not a reason to skip it. For a library, CLI, compiler, research or benchmark project, build the video from what the project really has: its real output, measured numbers as an animated chart, the core idea animated, or a text-forward sequence of its own claims (video.md and /brag both cover projects without a UI). Never fake a UI or a recording. Skip only when `--no-video` or `--no-demo` is set, or when the video genuinely fails after a real attempt; then say so plainly in the delivery, and use the fallbacks under Demo.
 
 ## 2. Plan
 
@@ -176,6 +176,7 @@ Copy the original to `brag-output/repo/README.before.md` before touching anythin
 
 ## 5. Deliver
 
+- **Say where everything is, with full paths.** The README is `README.md`; the images are in `.github/readme/`, a hidden folder, so also say how to see it (Cmd+Shift+. in Finder) or offer to copy the files somewhere visible; the video and plan are in `brag-output/`. If you made a video, name `brag-output/brag.mp4`. If you didn't, say why in one line.
 - **Tell the user** what changed: the new section order, the visuals you made and where they live, what you kept from the old README, and where the backup is. Show the first screen (hero + demo) as a screenshot if the client can display images. Remind them the animated hero only looks right on GitHub itself, not in editors that preview Markdown without SVG animation.
 - **Don't commit or push.** Leave the changes in the working tree for the user to review.
 - **Repo metadata** (outward-facing, so offer and wait for a yes): the description, topics, and homepage, as a ready-to-run command:
